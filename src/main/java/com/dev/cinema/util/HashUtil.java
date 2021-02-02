@@ -7,7 +7,7 @@ import java.security.SecureRandom;
 public class HashUtil {
     private static final String SHA_512_ALGORITHM = "SHA-512";
 
-    public HashUtil() {
+    private HashUtil() {
     }
 
     public static byte[] getSalt() {
