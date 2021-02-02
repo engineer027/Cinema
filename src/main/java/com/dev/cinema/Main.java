@@ -6,6 +6,7 @@ import com.dev.cinema.model.CinemaHall;
 import com.dev.cinema.model.Movie;
 import com.dev.cinema.model.MovieSession;
 import com.dev.cinema.model.User;
+import com.dev.cinema.security.AuthenticationService;
 import com.dev.cinema.security.AuthenticationServiceImpl;
 import com.dev.cinema.service.CinemaHallService;
 import com.dev.cinema.service.MovieService;
@@ -61,11 +62,11 @@ public class Main {
         User user = userService.findByEmail("ssss@gmail.com").get();
         System.out.println(user);
 
-        AuthenticationServiceImpl service = new AuthenticationServiceImpl();
-        service.register("bob@gmail.com", "1234");
-        service.register("alice@gmail.com", "1234");
+        AuthenticationService authenticationService = (AuthenticationService) injector.getInstance(AuthenticationService.class);
+        authenticationService.register("bob@gmail.com", "1234");
+        authenticationService.register("alice@gmail.com", "1234");
         try {
-            User login = service.login("bob@gmail.com", "1234");
+            User login = authenticationService.login("bob@gmail.com", "1234");
         } catch (AuthenticationException e) {
             System.out.println("login not work");
         }

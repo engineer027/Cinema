@@ -1,14 +1,14 @@
 package com.dev.cinema.security;
 
 import com.dev.cinema.exception.AuthenticationException;
-import com.dev.cinema.lib.Dao;
 import com.dev.cinema.lib.Inject;
+import com.dev.cinema.lib.Service;
 import com.dev.cinema.model.User;
 import com.dev.cinema.service.UserService;
 import com.dev.cinema.util.HashUtil;
 import java.util.Optional;
 
-@Dao
+@Service
 public class AuthenticationServiceImpl implements AuthenticationService {
     @Inject
     private UserService userService;
