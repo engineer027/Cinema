@@ -20,18 +20,15 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (userFromDB.isPresent() && userFromDB.get().getPassword().equals(hashPassword)) {
             return userFromDB.get();
         }
-        throw new AuthenticationException("Incorrect login "+ email
-                + "or password" + password);
+        throw new AuthenticationException("Incorrect login "
+                + email + "or password" + password);
     }
 
     @Override
     public User register(String email, String password) {
         User user = new User();
         user.setLogin(email);
-        byte[] salt = HashUtil.getSalt();
-        user.setSalt(salt);
-        String hashPassword = HashUtil.hashPassword(password, salt);
-        user.setPassword(hashPassword);
+        user.setPassword(password);
         userService.add(user);
         return user;
     }
