@@ -20,7 +20,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (userFromDB.isPresent() && userFromDB.get().getPassword().equals(hashPassword)) {
             return userFromDB.get();
         }
-        throw new AuthenticationException("Incorrect login or password");
+        throw new AuthenticationException("Incorrect login "+ email
+                + "or password" + password);
     }
 
     @Override
