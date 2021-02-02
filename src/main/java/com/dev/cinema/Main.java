@@ -53,5 +53,21 @@ public class Main {
         movieSessionService.add(movieSessionSoulTwo);
         movieSessionService.findAvailableSessions(movieSoul.getId(), localDateTime.toLocalDate());
 
+        User bob = new User();
+        bob.setLogin("ssss@gmail.com");
+        bob.setPassword("1234");
+        UserService userService = (UserService) injector.getInstance(UserService.class);
+        userService.add(bob);
+        User user = userService.findByEmail("ssss@gmail.com").get();
+        System.out.println(user);
+
+        AuthenticationServiceImpl service = new AuthenticationServiceImpl();
+        service.register("bob@gmail.com", "1234");
+        service.register("alice@gmail.com", "1234");
+        try {
+            User login = service.login("bob@gmail.com", "1234");
+        } catch (AuthenticationException e) {
+            System.out.println("login not work");
+        }
     }
 }
