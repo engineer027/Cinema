@@ -58,7 +58,7 @@ public class Main {
         bob.setPassword("1234");
         UserService userService = (UserService) injector.getInstance(UserService.class);
         userService.add(bob);
-        User user = userService.findByEmail("ssss@gmail.com").get();
+        User user = userService.findByLogin("ssss@gmail.com").get();
         System.out.println(user);
 
         AuthenticationService authenticationService = (AuthenticationService) injector
