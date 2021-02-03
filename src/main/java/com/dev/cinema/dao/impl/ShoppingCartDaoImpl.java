@@ -8,6 +8,7 @@ import com.dev.cinema.model.User;
 import com.dev.cinema.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 @Dao
 public class ShoppingCartDaoImpl implements ShoppingCartDao {
@@ -37,7 +38,13 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
     @Override
     public ShoppingCart getByUser(User user) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            return session.get(ShoppingCart.class, user.getId());
+            //return session.get(ShoppingCart.class, user.getId());
+            Query<ShoppingCart> getUser = session
+                    .createQuery("SELECT sc FROM ShoppingCart sc "
+                                    + "left join fetch sc.tickets WHERE sc.id = :user_id",
+                            ShoppingCart.class);
+            getUser.setParameter("user_id", user.getId());
+            return getUser.getSingleResult();
         } catch (Exception e) {
             throw new RuntimeException("Can't get User with id= " + user.getId(), e);
         }

@@ -13,6 +13,7 @@ import java.util.Optional;
 public class AuthenticationServiceImpl implements AuthenticationService {
     @Inject
     private UserService userService;
+    @Inject
     private ShoppingCartService shoppingCartService;
 
     @Override
