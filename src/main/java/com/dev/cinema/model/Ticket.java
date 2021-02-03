@@ -1,25 +1,22 @@
 package com.dev.cinema.model;
 
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "shopping_cart")
-public class ShoppingCart {
+@Table(name = "ticket")
+public class Ticket {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
-    private List<Ticket> tickets;
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "id")
+    @ManyToOne
+    private MovieSession movieSession;
+    @ManyToOne
     private User user;
 
     public Long getId() {
@@ -30,12 +27,12 @@ public class ShoppingCart {
         this.id = id;
     }
 
-    public List<Ticket> getTickets() {
-        return tickets;
+    public MovieSession getMovieSession() {
+        return movieSession;
     }
 
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
+    public void setMovieSession(MovieSession movieSession) {
+        this.movieSession = movieSession;
     }
 
     public User getUser() {
@@ -54,22 +51,22 @@ public class ShoppingCart {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        ShoppingCart that = (ShoppingCart) o;
-        return Objects.equals(id, that.id)
-                && Objects.equals(tickets, that.tickets)
-                && Objects.equals(user, that.user);
+        Ticket ticket = (Ticket) o;
+        return Objects.equals(id, ticket.id)
+                && Objects.equals(movieSession, ticket.movieSession)
+                && Objects.equals(user, ticket.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, tickets, user);
+        return Objects.hash(id, movieSession, user);
     }
 
     @Override
     public String toString() {
-        return "ShoppingCart{"
+        return "Ticket{"
                 + "id=" + id
-                + ", tickets=" + tickets
+                + ", movieSession=" + movieSession
                 + ", user=" + user + '}';
     }
 }
