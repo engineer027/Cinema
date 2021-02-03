@@ -66,7 +66,7 @@ public class Main {
         AuthenticationService authenticationService = (AuthenticationService) injector
                 .getInstance(AuthenticationService.class);
         authenticationService.register("bob@gmail.com", "1234");
-        User alise = authenticationService.register("alice@gmail.com", "1234");
+        User alice = authenticationService.register("alice@gmail.com", "1234");
         try {
             User login = authenticationService.login("bob@gmail.com", "1234");
             System.out.println(login.toString());
@@ -76,8 +76,8 @@ public class Main {
 
         ShoppingCartService shoppingCartService = (ShoppingCartService) injector
                 .getInstance(ShoppingCartService.class);
-        ShoppingCart byUser = shoppingCartService.getByUser(alise);
+        ShoppingCart byUser = shoppingCartService.getByUser(alice);
         System.out.println(byUser.toString());
-        shoppingCartService.addSession(movieSessionSoul, alise);
+        shoppingCartService.addSession(movieSessionSoul, alice);
     }
 }
