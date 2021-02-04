@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @OneToMany
     private List<Ticket> tickets;
     private LocalDateTime orderDate;
@@ -64,7 +64,7 @@ public class Order {
             return false;
         }
         Order order = (Order) o;
-        return id == order.id
+        return Objects.equals(id, order.id)
                 && Objects.equals(tickets, order.tickets)
                 && Objects.equals(orderDate, order.orderDate)
                 && Objects.equals(user, order.user);

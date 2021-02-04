@@ -77,9 +77,8 @@ public class Main {
 
         ShoppingCartService shoppingCartService = (ShoppingCartService) injector
                 .getInstance(ShoppingCartService.class);
-        ShoppingCart byUser = shoppingCartService.getByUser(alice);
-        System.out.println(byUser.toString());
         shoppingCartService.addSession(movieSessionSoul, alice);
+        ShoppingCart byUser = shoppingCartService.getByUser(alice);
         OrderService orderService = (OrderService) injector
                 .getInstance(OrderService.class);
         orderService.completeOrder(byUser);
