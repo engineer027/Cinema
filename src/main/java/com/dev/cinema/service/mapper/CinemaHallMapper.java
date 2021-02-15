@@ -6,12 +6,12 @@ import com.dev.cinema.model.dto.CinemaHallResponseDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CinemaHallMapperImpl {
+public class CinemaHallMapper {
     public CinemaHallResponseDto mapCinemaHallToDto(CinemaHall cinemaHall) {
         CinemaHallResponseDto cinemaHallResponseDto = new CinemaHallResponseDto();
         cinemaHallResponseDto.setDescription(cinemaHall.getDescription());
         cinemaHallResponseDto.setId(cinemaHall.getId());
-        cinemaHallResponseDto.setCapacity(cinemaHallResponseDto.getCapacity());
+        cinemaHallResponseDto.setCapacity(cinemaHall.getCapacity());
         return cinemaHallResponseDto;
     }
 

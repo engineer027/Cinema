@@ -6,7 +6,7 @@ import com.dev.cinema.model.dto.MovieResponseDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MovieMapperImpl {
+public class MovieMapper {
     public MovieResponseDto mapMovieToDto(Movie movie) {
         MovieResponseDto movieResponseDto = new MovieResponseDto();
         movieResponseDto.setId(movie.getId());

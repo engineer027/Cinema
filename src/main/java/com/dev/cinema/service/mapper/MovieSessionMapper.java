@@ -10,12 +10,12 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MovieSessionMapperImpl {
+public class MovieSessionMapper {
     private final MovieService movieService;
     private final CinemaHallService cinemaHallService;
 
-    public MovieSessionMapperImpl(MovieService movieService,
-                                  CinemaHallService cinemaHallService) {
+    public MovieSessionMapper(MovieService movieService,
+                              CinemaHallService cinemaHallService) {
         this.movieService = movieService;
         this.cinemaHallService = cinemaHallService;
     }

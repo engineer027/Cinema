@@ -4,7 +4,7 @@ import com.dev.cinema.model.MovieSession;
 import com.dev.cinema.model.dto.MovieSessionRequestDto;
 import com.dev.cinema.model.dto.MovieSessionResponseDto;
 import com.dev.cinema.service.MovieSessionService;
-import com.dev.cinema.service.mapper.MovieSessionMapperImpl;
+import com.dev.cinema.service.mapper.MovieSessionMapper;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/movie-sessions")
 public class MovieSessionController {
     private final MovieSessionService movieSessionService;
-    private final MovieSessionMapperImpl movieSessionMapper;
+    private final MovieSessionMapper movieSessionMapper;
 
     public MovieSessionController(MovieSessionService movieSessionService,
-                                  MovieSessionMapperImpl movieSessionMapper) {
+                                  MovieSessionMapper movieSessionMapper) {
         this.movieSessionService = movieSessionService;
         this.movieSessionMapper = movieSessionMapper;
     }
@@ -52,7 +52,6 @@ public class MovieSessionController {
     @DeleteMapping("/{movieSessionId}")
     public void delete(@PathVariable Long movieSessionId) {
         movieSessionService.delete(movieSessionId);
-
     }
 
     @PutMapping("/{movieSessionId}")
