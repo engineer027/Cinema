@@ -1,7 +1,6 @@
 package com.dev.cinema.controllers;
 
 import com.dev.cinema.model.MovieSession;
-import com.dev.cinema.model.dto.MovieSessionDeleteDto;
 import com.dev.cinema.model.dto.MovieSessionRequestDto;
 import com.dev.cinema.model.dto.MovieSessionResponseDto;
 import com.dev.cinema.model.dto.MovieSessionUpdateDto;
@@ -21,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(" /movie-sessions")
+@RequestMapping("/movie-sessions")
 public class MovieSessionController {
     private final MovieSessionService movieSessionService;
     private final MovieSessionMapper movieSessionMapper;
@@ -33,10 +32,10 @@ public class MovieSessionController {
     }
 
     @GetMapping("/available")
-    public List<MovieSessionResponseDto> findAvailableSessions(@RequestParam Long movieId,
-                                                               @RequestParam
-                                                    @DateTimeFormat(pattern = "dd.MM.yyyy")
-                                                            LocalDate date) {
+    public List<MovieSessionResponseDto> findAvailableSessions(
+                                        @RequestParam Long movieId,
+                                        @RequestParam @DateTimeFormat(pattern = "dd.MM.yyyy")
+                                                LocalDate date) {
         return movieSessionService.findAvailableSessions(movieId, date)
                 .stream()
                 .map(movieSessionMapper::mapMovieSessionToResponseDto)
@@ -51,10 +50,8 @@ public class MovieSessionController {
     }
 
     @DeleteMapping
-    public void delete(@RequestBody MovieSessionDeleteDto movieSessionDeleteDto) {
-        MovieSession movieSession = movieSessionMapper
-                .mapDeleteDtoToMovieSession(movieSessionDeleteDto);
-        movieSessionService.delete(movieSession);
+    public void delete(@RequestBody Long movieSessionId) {
+        movieSessionService.delete(movieSessionId);
 
     }
 

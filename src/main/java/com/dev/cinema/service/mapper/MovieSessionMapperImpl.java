@@ -1,7 +1,6 @@
 package com.dev.cinema.service.mapper;
 
 import com.dev.cinema.model.MovieSession;
-import com.dev.cinema.model.dto.MovieSessionDeleteDto;
 import com.dev.cinema.model.dto.MovieSessionRequestDto;
 import com.dev.cinema.model.dto.MovieSessionResponseDto;
 import com.dev.cinema.model.dto.MovieSessionUpdateDto;
