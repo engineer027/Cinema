@@ -4,7 +4,7 @@ import com.dev.cinema.model.Movie;
 import com.dev.cinema.model.dto.MovieRequestDto;
 import com.dev.cinema.model.dto.MovieResponseDto;
 import com.dev.cinema.service.MovieService;
-import com.dev.cinema.service.mapper.MovieMapper;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.GetMapping;

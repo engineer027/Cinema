@@ -9,7 +9,7 @@ import com.dev.cinema.service.MovieService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MovieSessionMapperImpl implements MovieSessionMapper {
+public class MovieSessionMapperImpl {
     private final MovieService movieService;
     private final CinemaHallService cinemaHallService;
 
@@ -19,7 +19,6 @@ public class MovieSessionMapperImpl implements MovieSessionMapper {
         this.cinemaHallService = cinemaHallService;
     }
 
-    @Override
     public MovieSessionResponseDto mapMovieSessionToResponseDto(MovieSession movieSession) {
         MovieSessionResponseDto movieSessionResponseDto = new MovieSessionResponseDto();
         movieSessionResponseDto.setId(movieSession.getId());
@@ -29,7 +28,6 @@ public class MovieSessionMapperImpl implements MovieSessionMapper {
         return movieSessionResponseDto;
     }
 
-    @Override
     public MovieSession mapRequestDtoToMovieSession(MovieSessionRequestDto movieSessionRequestDto) {
         MovieSession movieSession = new MovieSession();
         movieSession.setShowTime(movieSessionRequestDto.getShowTime());
@@ -39,7 +37,6 @@ public class MovieSessionMapperImpl implements MovieSessionMapper {
         return movieSession;
     }
 
-    @Override
     public MovieSession mapUpdateDtoToMovieSession(MovieSessionUpdateDto movieSessionUpdateDto) {
         MovieSession movieSession = new MovieSession();
         movieSession.setId(movieSessionUpdateDto.getId());
