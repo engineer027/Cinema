@@ -7,4 +7,6 @@ public interface UserService {
     User add(User user);
 
     Optional<User> findByLogin(String login);
+
+    User get(Long userId);
 }

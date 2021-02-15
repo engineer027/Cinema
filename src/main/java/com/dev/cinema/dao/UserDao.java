@@ -7,4 +7,6 @@ public interface UserDao {
     User add(User user);
 
     Optional<User> findByLogin(String login);
+
+    Optional<User> get(Long userId);
 }
