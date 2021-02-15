@@ -4,7 +4,7 @@ import com.dev.cinema.model.CinemaHall;
 import com.dev.cinema.model.dto.CinemaHallRequestDto;
 import com.dev.cinema.model.dto.CinemaHallResponseDto;
 import com.dev.cinema.service.CinemaHallService;
-
+import com.dev.cinema.service.mapper.CinemaHallMapperImpl;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cinema-halls")
 public class CinemaHallController {
     private final CinemaHallService cinemaHallService;
-    private final CinemaHallMapper cinemaHallMapper;
+    private final CinemaHallMapperImpl cinemaHallMapper;
 
     public CinemaHallController(CinemaHallService cinemaHallService,
-                                CinemaHallMapper cinemaHallMapper) {
+                                CinemaHallMapperImpl cinemaHallMapper) {
         this.cinemaHallService = cinemaHallService;
         this.cinemaHallMapper = cinemaHallMapper;
     }

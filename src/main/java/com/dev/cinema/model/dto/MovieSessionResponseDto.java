@@ -1,12 +1,11 @@
 package com.dev.cinema.model.dto;
 
-import com.dev.cinema.model.Movie;
-
 public class MovieSessionResponseDto {
     private Long id;
-    private Movie movie;
+    private Long movieId;
     private String movieTitle;
     private Long cinemaHallId;
+    private String showTime;
 
     public Long getId() {
         return id;
@@ -16,12 +15,12 @@ public class MovieSessionResponseDto {
         this.id = id;
     }
 
-    public Movie getMovie() {
-        return movie;
+    public Long getMovieId() {
+        return movieId;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public void setMovieId(Long movieId) {
+        this.movieId = movieId;
     }
 
     public String getMovieTitle() {
@@ -38,5 +37,13 @@ public class MovieSessionResponseDto {
 
     public void setCinemaHallId(Long cinemaHallId) {
         this.cinemaHallId = cinemaHallId;
+    }
+
+    public String getShowTime() {
+        return showTime;
+    }
+
+    public void setShowTime(String showTime) {
+        this.showTime = showTime;
     }
 }
