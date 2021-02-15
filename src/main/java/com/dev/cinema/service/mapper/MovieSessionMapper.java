@@ -11,6 +11,4 @@ public interface MovieSessionMapper {
     MovieSession mapRequestDtoToMovieSession(MovieSessionRequestDto movieSessionRequestDto);
 
     MovieSession mapUpdateDtoToMovieSession(MovieSessionUpdateDto movieSessionUpdateDto);
-
-    MovieSession mapDeleteDtoToMovieSession(MovieSessionDeleteDto movieSessionDeleteDto);
 }

@@ -49,15 +49,4 @@ public class MovieSessionMapperImpl implements MovieSessionMapper {
                 .getCinemaHallId()));
         return movieSession;
     }
-
-    @Override
-    public MovieSession mapDeleteDtoToMovieSession(MovieSessionDeleteDto movieSessionDeleteDto) {
-        MovieSession movieSession = new MovieSession();
-        movieSession.setId(movieSessionDeleteDto.getId());
-        movieSession.setShowTime(movieSessionDeleteDto.getShowTime());
-        movieSession.setMovie(movieService.get(movieSessionDeleteDto.getMovieId()));
-        movieSession.setCinemaHall(cinemaHallService.get(movieSessionDeleteDto
-                .getCinemaHallId()));
-        return movieSession;
-    }
 }
