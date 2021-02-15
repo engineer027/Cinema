@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/register")
 public class AuthenticationController {
     private final AuthenticationServiceImpl service;
 
@@ -15,7 +14,7 @@ public class AuthenticationController {
         this.service = service;
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public void register(@RequestBody String login, String password) {
         service.register(login, password);
     }

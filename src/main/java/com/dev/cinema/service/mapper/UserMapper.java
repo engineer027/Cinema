@@ -8,8 +8,6 @@ public class UserMapper {
         UserResponseDto userResponseDto = new UserResponseDto();
         userResponseDto.setId(user.getId());
         userResponseDto.setLogin(user.getLogin());
-        userResponseDto.setPassword(user.getPassword());
-        userResponseDto.setSalt(user.getSalt());
         return userResponseDto;
     }
 }

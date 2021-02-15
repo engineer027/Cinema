@@ -6,6 +6,8 @@ import com.dev.cinema.model.dto.OrderResponseDto;
 import com.dev.cinema.service.UserService;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderMapper {
     private final UserService userService;
@@ -18,14 +20,16 @@ public class OrderMapper {
         OrderResponseDto orderResponseDto = new OrderResponseDto();
         orderResponseDto.setId(orderResponseDto.getId());
         orderResponseDto.setOrderDate(order.getOrderDate().toString());
-        orderResponseDto.setTickets(order.getTickets());
+        List<Long> ticketsId = order.getTickets().stream()
+                .map(p -> p.getId())
+                .collect(Collectors.toList());
+        orderResponseDto.setTicketsId(ticketsId);
         orderResponseDto.setUserId(order.getUser().getId());
         return orderResponseDto;
     }
 
     public Order mapRequestDtoToOrder(OrderRequestDto orderRequestDto) {
         Order order = new Order();
-        order.setTickets(orderRequestDto.getTickets());
         order.setOrderDate(LocalDateTime.parse(orderRequestDto.getOrderDate(),
                 DateTimeFormatter.ISO_LOCAL_DATE_TIME));
         order.setUser(userService.get(orderRequestDto.getUserId()));
