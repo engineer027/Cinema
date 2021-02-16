@@ -5,7 +5,9 @@ import com.dev.cinema.model.dto.OrderResponseDto;
 import com.dev.cinema.service.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderMapper {
     private final UserService userService;
 

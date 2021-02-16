@@ -4,7 +4,9 @@ import com.dev.cinema.model.ShoppingCart;
 import com.dev.cinema.model.dto.ShoppingCartResponseDto;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ShoppingCartMapper {
     public ShoppingCartResponseDto mapShoppingCartToResponseDto(ShoppingCart shoppingCart) {
         ShoppingCartResponseDto shoppingCartResponseDto = new ShoppingCartResponseDto();

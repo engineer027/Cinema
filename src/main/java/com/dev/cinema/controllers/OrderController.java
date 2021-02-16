@@ -35,7 +35,7 @@ public class OrderController {
     }
 
     @PostMapping("/complete")
-    public void complete(@RequestParam Long userId) {
+    public void complete(@RequestParam Long userId) { //не працює
         User user = userService.get(userId);
         ShoppingCart shoppingCart = shoppingCartService.getByUser(user);
         orderService.completeOrder(shoppingCart);
