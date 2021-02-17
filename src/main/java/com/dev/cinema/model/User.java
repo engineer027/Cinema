@@ -1,6 +1,5 @@
 package com.dev.cinema.model;
 
-import java.util.Arrays;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +17,6 @@ public class User {
     @Column(nullable = false, unique = true, length = 20)
     private String login;
     private String password;
-    private byte[] salt;
 
     public Long getId() {
         return id;
@@ -44,14 +42,6 @@ public class User {
         this.password = password;
     }
 
-    public byte[] getSalt() {
-        return salt;
-    }
-
-    public void setSalt(byte[] salt) {
-        this.salt = salt;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -63,14 +53,13 @@ public class User {
         User user = (User) o;
         return Objects.equals(id, user.id)
                 && Objects.equals(login, user.login)
-                && Objects.equals(password, user.password)
-                && Arrays.equals(salt, user.salt);
+                && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
         int result = Objects.hash(id, login, password);
-        result = 31 * result + Arrays.hashCode(salt);
+        result = 31 * result;
         return result;
     }
 
