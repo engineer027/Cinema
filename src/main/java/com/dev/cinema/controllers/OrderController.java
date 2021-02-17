@@ -10,10 +10,11 @@ import com.dev.cinema.service.UserService;
 import com.dev.cinema.service.mapper.OrderMapper;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -35,15 +36,17 @@ public class OrderController {
     }
 
     @PostMapping("/complete")
-    public void complete(@RequestParam Long userId) { //не працює
-        User user = userService.get(userId);
+    public void complete(Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        User user = userService.findByLogin(userDetails.getUsername()).get();
         ShoppingCart shoppingCart = shoppingCartService.getByUser(user);
         orderService.completeOrder(shoppingCart);
     }
 
     @GetMapping
-    public List<OrderResponseDto> getOrderHistory(@RequestParam Long userId) {
-        User user = userService.get(userId);
+    public List<OrderResponseDto> getOrderHistory(Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        User user = userService.findByLogin(userDetails.getUsername()).get();
         List<Order> ordersHistory = orderService.getOrdersHistory(user);
         return ordersHistory.stream()
                 .map(p -> orderMapper.mapOrderToResponseDto(p))
