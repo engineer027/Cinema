@@ -15,12 +15,12 @@ public class FieldsValueMatchValidator
         this.fieldMatch = constraintAnnotation.fieldMatch();
     }
 
-    public boolean isValid(Object value,
+    public boolean isValid(Object user,
                            ConstraintValidatorContext context) {
 
-        Object fieldValue = new BeanWrapperImpl(value)
+        Object fieldValue = new BeanWrapperImpl(user)
                 .getPropertyValue(field);
-        Object fieldMatchValue = new BeanWrapperImpl(value)
+        Object fieldMatchValue = new BeanWrapperImpl(user)
                 .getPropertyValue(fieldMatch);
 
         if (fieldValue != null) {

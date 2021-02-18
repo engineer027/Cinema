@@ -11,9 +11,9 @@ public class LoginValidator implements
     }
 
     @Override
-    public boolean isValid(String contactField,
+    public boolean isValid(String login,
                            ConstraintValidatorContext cxt) {
-        return contactField != null && (contactField.length() > 8) && (contactField.length() < 14);
+        return login != null && (login.length() > 8) && (login.length() < 14);
     }
 
 }
