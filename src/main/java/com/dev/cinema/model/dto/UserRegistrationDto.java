@@ -2,7 +2,7 @@ package com.dev.cinema.model.dto;
 
 import com.dev.cinema.annotation.FieldsValueMatch;
 import com.dev.cinema.annotation.LoginConstraint;
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 @FieldsValueMatch(
         field = "password",

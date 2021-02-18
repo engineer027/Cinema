@@ -1,16 +1,13 @@
 package com.dev.cinema.model.dto;
 
 import com.sun.istack.NotNull;
-import javax.validation.constraints.Size;
 
 public class MovieSessionRequestDto {
     @NotNull
     private String showTime;
     @NotNull
-    @Size(min = 1)
     private Long movieId;
     @NotNull
-    @Size(min = 1)
     private Long cinemaHallId;
 
     public String getShowTime() {
