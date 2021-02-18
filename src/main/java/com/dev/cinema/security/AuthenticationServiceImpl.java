@@ -1,28 +1,33 @@
 package com.dev.cinema.security;
 
 import com.dev.cinema.model.User;
+import com.dev.cinema.service.RoleService;
 import com.dev.cinema.service.ShoppingCartService;
 import com.dev.cinema.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-    private UserService userService;
-    private ShoppingCartService shoppingCartService;
+    private final UserService userService;
+    private final ShoppingCartService shoppingCartService;
+    private final RoleService roleService;
+    private final PasswordEncoder passwordEncoder;
 
     public AuthenticationServiceImpl(UserService userService,
-                                     ShoppingCartService shoppingCartService) {
+                                     ShoppingCartService shoppingCartService,
+                                     RoleService roleService,
+                                     PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.shoppingCartService = shoppingCartService;
+        this.roleService = roleService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    public User register(String login, String password) {
-        User user = new User();
-        user.setLogin(login);
-        user.setPassword(password);
-        userService.add(user);
-        shoppingCartService.registerNewShoppingCart(user);
+    public User register(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        shoppingCartService.registerNewShoppingCart(userService.add(user));
         return user;
     }
 }
