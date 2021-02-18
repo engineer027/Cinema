@@ -6,7 +6,6 @@ import org.springframework.beans.BeanWrapperImpl;
 
 public class FieldsValueMatchValidator
         implements ConstraintValidator<FieldsValueMatch, Object> {
-
     private String field;
     private String fieldMatch;
 
@@ -17,7 +16,6 @@ public class FieldsValueMatchValidator
 
     public boolean isValid(Object user,
                            ConstraintValidatorContext context) {
-
         Object fieldValue = new BeanWrapperImpl(user)
                 .getPropertyValue(field);
         Object fieldMatchValue = new BeanWrapperImpl(user)

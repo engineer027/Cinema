@@ -1,7 +1,7 @@
 package com.dev.cinema.model.dto;
 
-import com.sun.istack.NotNull;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class CinemaHallRequestDto {
     @Min(0)
