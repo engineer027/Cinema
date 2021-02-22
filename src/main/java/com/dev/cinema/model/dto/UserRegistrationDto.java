@@ -2,7 +2,6 @@ package com.dev.cinema.model.dto;
 
 import com.dev.cinema.annotation.FieldsValueMatch;
 import com.dev.cinema.annotation.LoginConstraint;
-import java.util.Set;
 import javax.validation.constraints.NotNull;
 
 @FieldsValueMatch(
@@ -16,8 +15,6 @@ public class UserRegistrationDto {
     private String verifyPassword;
     @LoginConstraint(message = "Login is not correct")
     private String login;
-    @NotNull
-    private Set<String> roles;
 
     public String getPassword() {
         return password;
@@ -41,13 +38,5 @@ public class UserRegistrationDto {
 
     public void setVerifyPassword(String verifyPassword) {
         this.verifyPassword = verifyPassword;
-    }
-
-    public Set<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
     }
 }
