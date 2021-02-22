@@ -5,7 +5,7 @@ import com.dev.cinema.model.User;
 import com.dev.cinema.model.dto.UserRegistrationDto;
 import com.dev.cinema.model.dto.UserResponseDto;
 import com.dev.cinema.service.RoleService;
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
@@ -28,9 +28,9 @@ public class UserMapper {
         User user = new User();
         user.setLogin(userRegistrationDto.getLogin());
         user.setPassword(userRegistrationDto.getPassword());
-        List<Role> roles = userRegistrationDto.getRoles().stream()
+        Set<Role> roles = userRegistrationDto.getRoles().stream()
                 .map(p -> roleService.getRoleByName(p))
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
         user.setRoles(roles);
         return user;
     }
