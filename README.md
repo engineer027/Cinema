@@ -1,7 +1,7 @@
 # Theatre
 
-This is a web service for cinema that allows customers to look for
-available sessions within many cinemas and book a suitable movie
+This is a web service for performance that allows customers to look for
+available sessions within many theatres and book a suitable performance
 session.
 
 One user can have multiple roles. <br>
