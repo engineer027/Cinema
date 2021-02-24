@@ -49,7 +49,7 @@ public class OrderController {
         User user = userService.findByLogin(userDetails.getUsername()).get();
         List<Order> ordersHistory = orderService.getOrdersHistory(user);
         return ordersHistory.stream()
-                .map(p -> orderMapper.mapOrderToResponseDto(p))
+                .map(orderMapper::mapOrderToResponseDto)
                 .collect(Collectors.toList());
     }
 }
